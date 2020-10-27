@@ -6,7 +6,7 @@ export default async function homeHandler() {
     this.username = localStorage.getItem('username')
     this.token = localStorage.getItem('token')
 
-    if (this.username) {
+    if (this.username && this.token) {
 
         // get all movies
         this.movies = await homeModul(this.token);
@@ -19,7 +19,7 @@ export default async function homeHandler() {
 
     await commonHandler.call(this, '../Views/Movies/home.hbs')
 
-    if (this.username) {    
+    if (this.username && this.token) {    
         let form = document.getElementsByTagName('form')[0]
 
         form.addEventListener('submit', (e) => {
