@@ -1,0 +1,29 @@
+{{> navbar}}
+{{> notifications}}
+<div class="container">
+    {{#with movie}}
+    <div class="row bg-light text-dark">
+        <h1>Movie title: {{title}}</h1>
+
+        <div class="col-md-8">
+            <img class="img-thumbnail" src="{{imageUrl}}" alt="Movie">
+        </div>
+        <div class="col-md-4 text-center">
+            <h3 class="my-3 ">Movie Description</h3>
+            <p>{{description}}</p>
+            {{/with}}
+            {{#if isCreator}}
+            <a class="btn btn-danger">Delete</a>
+            <a class="btn btn-warning" href="#/edit/{{movieId}}">Edit</a>
+            {{else}}
+            {{#if likedMovie}}
+            <span class="enrolled-span">Liked {{numberOfLikes}}</span>
+            {{else}}
+            <a class="btn btn-primary">Like</a>
+            {{/if}}
+            {{/if}}
+        </div>
+    </div>
+</div>
+
+{{>footer}}
